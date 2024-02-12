@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Notes</title>
+        <link rel="stylesheet" href="/styles/notes.css">
+</head>
+<body>
+        <h1>Biru Skai</h1>
+        <% if (locals.dataBookId) { %>
+                <h2><%= dataBookId.title %> By <%= dataBookId.author %></h2>
+                <small>
+                        ISBN: <%= dataBookId.isbn %>
+                        Date read: <%= dataBookId.time %>
+                        How strongly I recommend: <%= dataBookId.rating %>
+                </small>
+                <h4>See my list of <%= dataBookId.length %> books, for more.</h4>
+        
+                <p>
+                        Go to the <a href="<%= dataBook.website %>">Amazom Page</a> for details and reviews.<br>
+        
+                        <%= dataBookId.summary %>
+                </p>
+                <h3>My Notes</h3>
+                <p><%= dataBookId.notes %></p>
+        <% } else { %>
+                <p>No Content</p>
+        <% } %>
+
+</body>
+</html>
