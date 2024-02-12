@@ -11,14 +11,14 @@
         <% if (locals.dataBookId) { %>
                 <h2><%= dataBookId.title %> By <%= dataBookId.author %></h2>
                 <small>
-                        ISBN: <%= dataBookId.isbn %>
-                        Date read: <%= dataBookId.time %>
+                        ISBN: <%= dataBookId.isbn %><br>
+                        Date read: <%= dataBookId.time %><br>
                         How strongly I recommend: <%= dataBookId.rating %>
                 </small>
                 <h4><a href="/">See my list of <%= bookListLength %> <%= bookListLength > 1 ? "books" : "book" %></a> for more info.</h4>
         
                 <p>
-                        Go to the <a href="<%= dataBookId.website %>">Amazom Page</a> for details and reviews.<br>
+                        Go to the <a href="<%= dataBookId.website %>">Amazom Page</a> for details and reviews.<br><br>
         
                         <%= dataBookId.summary %>
                 </p>

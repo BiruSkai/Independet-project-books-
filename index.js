@@ -21,9 +21,9 @@ let bookListLength;
 app.get("/", async(req, res) => {
         const {sort} = req.query;
         console.log("sort: ", sort)
-        // let fetchImage = axios.get(`https://covers.openlibrary.org/b/${key}/${value}-L.jpg`)
 
         let fetchBooksDb;
+        let imageList = [];
 
         switch (sort) {
                 case sort === "title":
@@ -49,6 +49,7 @@ app.get("/", async(req, res) => {
         }
         
         let dataBooks = fetchBooksDb.rows;
+
         bookListLength = dataBooks.length;
         console.log("dataBooks, bookListLength: ", dataBooks, bookListLength);
         
@@ -79,13 +80,11 @@ app.get("/add", (req, res) => {
 
 app.post("/add", async (req, res) => {
         let {title, author, website, isbn, rating, summary, notes} = req.body;
-        // summary = JSON.parse(summary);
-        // notes = JSON.parse(notes);
-        isbn = parseInt(isbn);
+
         rating = parseInt(rating);
         console.log("title, author, website, isbn, rating: ", title, author, website, isbn, rating);
-        console.log("summary: ", summary);
-        console.log("notes: ", notes);
+        // console.log("summary: ", summary);
+        // console.log("notes: ", notes);
 
         try {
                 await db.query("INSERT INTO books(title,author,website,isbn,rating,summary,notes) VALUES ($1,$2,$3,$4,$5,$6,$7)", [title, author, website, isbn, rating, summary, notes]);
