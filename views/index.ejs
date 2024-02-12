@@ -26,13 +26,16 @@
                 <a href="/?sort=rating">best</a>.
         </p><hr>
 
+        <a href="/add">Add Book</a>
+
         <div class="bookContainer">
                 <% if (locals.dataBooks.length > 0) { %>
                         <% dataBooks.map(book => { %>
-                                <h2><%= book.title %></h2>
+                                <h2><a href="/notes/<%= book.id %>"><%= book.title %> - by <%= book.author %></a></h2>
                                 <small>Date read: <%= book.time %>. How strongly I recommend it: <%= book.rating %>/10</small>
         
                                 <p><%= book.summary %></p><br>
+                                <% console.log("test: ", book.id) %>
                                 <p><strong><a href="/notes/<%= book.id %>">Read my notes</a></strong>, or go to the <a href="<%= book.website %>">Amazon page</a> for details and reviews.</p>
                         <% }) %>
                 <% } else { %>

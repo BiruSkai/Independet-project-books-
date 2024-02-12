@@ -15,10 +15,10 @@
                         Date read: <%= dataBookId.time %>
                         How strongly I recommend: <%= dataBookId.rating %>
                 </small>
-                <h4>See my list of <%= dataBookId.length %> books, for more.</h4>
+                <h4><a href="/">See my list of <%= bookListLength %> <%= bookListLength > 1 ? "books" : "book" %></a> for more info.</h4>
         
                 <p>
-                        Go to the <a href="<%= dataBook.website %>">Amazom Page</a> for details and reviews.<br>
+                        Go to the <a href="<%= dataBookId.website %>">Amazom Page</a> for details and reviews.<br>
         
                         <%= dataBookId.summary %>
                 </p>

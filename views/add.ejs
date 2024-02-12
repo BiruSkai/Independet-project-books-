@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Book</title>
+        <link rel="stylesheet" href="/styles/add.css">
+</head>
+<body>
+        <h1>Add New Book's Review</h1>
+        <hr>
+                <p><%= locals.error ? error : null %></p> 
+                
+                <form method="post" action="/add">
+                        <% queries.map(query => { %>
+                                <div class="queryContainer">
+                                        <label for="<%= query %>"><%= query.charAt(0).toUpperCase() + query.slice(1) %>:</label>
+                                        <input type="text" name="<%= query %>" id="<%= query %>">
+                                </div>
+                        <% }) %>
+        
+                        <div class="queryContainer">
+                                <label for="rating">Rating:</label>
+                                <select name="rating" id="rating">
+                                        <% for (let i = 1; i < 11; i++) { %>
+                                                <option value="<%= i %>"><%= i %></option>
+                                        <% } %>
+                                </select>
+                        </div>
+        
+                        <div class="queryContainer">
+                                <label for="summary">Summary:</label><br>
+                                <textarea name="summary" id="summary" maxlength="700" cols="50" rows="5"></textarea>
+                        </div>
+                        <div class="queryContainer">
+                                <label for="notes">Notes:</label><br>
+                                <textarea name="notes" id="notes" cols="50" rows="10"></textarea>
+                        </div>
+                        <input type="submit" value="Add" class="queryContainer submit">
+                </form>
+        
+</body>
+</html>
