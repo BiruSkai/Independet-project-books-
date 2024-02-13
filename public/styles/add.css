@@ -1,13 +1,20 @@
 .queryContainer, h1{
-        margin: 15px;
+      margin: 15px;
+
       >label {
         display:inline-block;
         width: 70px;
       }
+
+      >input{
+        width:65%;
+      }
+
       >textarea {
         width:100%;
         margin-top:10px;
       }
+
       >input, textarea, select{
         border:none;
         background-color: aliceblue;
@@ -21,4 +28,57 @@
         width:70px;
         padding:5px;
         border-radius:7px;
+        border:none;
+        background-color: #333;
+        color:white;
+}
+
+@media (min-width:768px){
+  .queryContainer{
+    >input{
+      width:50%;
+    }
+    
+    >textarea{
+      width:80%;
+      margin-left:70px;
+    }
+  }
+}
+
+@media (min-width:1024px){
+  label, .submit{
+    font-size:120%;
+  }
+
+  .queryContainer{
+    >input, textarea{
+      font-size:1rem ;
+      letter-spacing: 2px;
+      padding:5px;
+    }
+  }
+
+  .submit {
+    width: 10%;
+    padding: 10px;
+  }
+}
+
+@media (min-width:1440px){
+  label, .submit{
+    font-size:140%;
+  }
+
+  label{
+    width:100px;
+  }
+
+  .queryContainer{
+    >input, textarea{
+      font-size:1.2rem ;
+      letter-spacing: 2px;
+      padding:10px;
+    }
+  }
 }

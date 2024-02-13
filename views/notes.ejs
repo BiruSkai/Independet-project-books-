@@ -8,20 +8,22 @@
 </head>
 <body>
         <h1>Biru Skai</h1>
+        <hr>
         <% if (locals.dataBookId) { %>
                 <h2><%= dataBookId.title %> By <%= dataBookId.author %></h2>
-                <small>
-                        ISBN: <%= dataBookId.isbn %><br>
-                        Date read: <%= dataBookId.time %><br>
-                        How strongly I recommend: <%= dataBookId.rating %>
-                </small>
-                <h4><a href="/">See my list of <%= bookListLength %> <%= bookListLength > 1 ? "books" : "book" %></a> for more info.</h4>
+                <small>ISBN: <%= dataBookId.isbn %></small><br>
+                <small>Date read: <%= dataBookId.time %></small><br>        
+                <small>How strongly I recommend: <strong><%= dataBookId.rating %></strong>/10</small>        
+                
+                <h4><a href="/">See my list of <%= bookListLength %> <%= bookListLength > 1 ? "books" : "book" %></a></h4>
         
                 <p>
-                        Go to the <a href="<%= dataBookId.website %>">Amazom Page</a> for details and reviews.<br><br>
-        
-                        <%= dataBookId.summary %>
-                </p>
+                        Go to the <a href="<%= dataBookId.website %>">Amazon Page</a> for details and reviews.<br>
+                </p><hr>
+                <h3>Summary:</h3>
+                <p><%= dataBookId.summary %></p>  
+                <hr>
+
                 <h3>My Notes</h3>
                 <p><%= dataBookId.notes %></p>
         <% } else { %>

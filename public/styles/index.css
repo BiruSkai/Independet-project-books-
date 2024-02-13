@@ -3,12 +3,135 @@ body{
 }
 
 .bookContainer{
-        margin: 10px auto;
-        > div {
-                margin-left:23%;
-        }
+        display:flex;
+        flex-direction: column;
+}
+
+.text{
+        text-align: justify;
+}
+
+#addBook{
+        display:block;
+        background-color: #333;
+        color:white;
+        padding:10px;
+        padding-left:35px;
+        text-decoration: none;
+}
+
+#addBook:hover{
+        font: 120%;
 }
 
 img{
-        float: left;
+        width:100%;
+}
+
+ul{
+        list-style: none;
+        padding-left:0px;
+        background-color: #333;
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+        >li{
+                margin: 10px;
+                >a{
+                        text-decoration: none;
+                        color:white;
+                }
+                >a:hover{
+                        font-size: 120%;
+                }
+        }
+}
+
+.contentContainer{
+        margin-bottom:15px;
+        padding: 0 10px;
+        background: #dbfbdb;
+}
+
+@media (min-width:768px){
+        .bookContainer{
+                display:grid;
+                grid-template-columns: 3fr 9fr;
+                grid-template-rows: 1;
+                margin-bottom:10px;
+        }
+
+        li{
+                text-align: center;
+        }
+
+        img{
+                width:100%;
+        }
+
+        .contentContainer{
+                margin-bottom:3px;
+        }
+}
+
+@media (min-width:1024px){
+        .bookContainer{
+                margin-bottom:15px;
+        }
+
+        p{
+                font-size:130%;
+        }
+
+        small{
+                font-size:110%;
+        }
+
+        h1{
+                font-size: 180%;
+        }
+
+        h2{
+                font-size: 160%;
+        }
+
+        li a, #addBook{
+                font-size: 110%;
+        }
+
+        p, small, h1, h2, li a, #addBook{
+                letter-spacing: 1px;
+                line-height:30px;
+        }
+}
+
+@media (min-width:1440px){
+        .bookContainer{
+                margin-bottom:20px;
+        }
+        
+        p{
+                font-size:150%;
+        }
+
+        small{
+                font-size:130%;
+        }
+
+        h1{
+                font-size: 200%;
+        }
+
+        h2{
+                font-size: 180%;
+        }
+
+        li a, #addBook{
+                font-size: 130%;
+        }
+
+        p, small, h1, h2, li a, #addBook{
+                letter-spacing: 2px;
+                line-height:35px;
+        }
 }

@@ -23,17 +23,16 @@ app.get("/", async(req, res) => {
         console.log("sort: ", sort)
 
         let fetchBooksDb;
-        let imageList = [];
 
         switch (sort) {
-                case sort === "title":
+                case "title":
                         try {
                                 fetchBooksDb = await db.query("SELECT * FROM books ORDER BY title ASC");
                         } catch (error) {
                                 console.log(error)
                         }
                         break;
-                case sort === "time":
+                case "newest":
                         try {
                                 fetchBooksDb = await db.query("SELECT * FROM books ORDER BY time DESC");
                         } catch (error) {
@@ -49,9 +48,10 @@ app.get("/", async(req, res) => {
         }
         
         let dataBooks = fetchBooksDb.rows;
+        console.log("dataBooks sort: ", dataBooks.map(book => book.time))
 
         bookListLength = dataBooks.length;
-        console.log("dataBooks, bookListLength: ", dataBooks, bookListLength);
+        // console.log("dataBooks, bookListLength: ", dataBooks, bookListLength);
         
         res.render("index.ejs", {dataBooks});
 })
