@@ -37,12 +37,17 @@ ul{
         justify-content: space-around;
         >li{
                 margin: 10px;
-                >a{
+                >form .modify{
                         text-decoration: none;
                         color:white;
+                        background-color: #333;
                 }
-                >a:hover{
+                >form .modify:hover{
                         font-size: 120%;
+                }
+                .modify{
+                        text-decoration: none;
+                        color:white;
                 }
         }
 }
@@ -95,11 +100,11 @@ ul{
                 font-size: 160%;
         }
 
-        li a, #addBook{
+        li .modify, #addBook{
                 font-size: 110%;
         }
 
-        p, small, h1, h2, li a, #addBook{
+        p, small, h1, h2, li .modify, #addBook{
                 letter-spacing: 1px;
                 line-height:30px;
         }
@@ -126,11 +131,11 @@ ul{
                 font-size: 180%;
         }
 
-        li a, #addBook{
+        li .modify, #addBook{
                 font-size: 130%;
         }
 
-        p, small, h1, h2, li a, #addBook{
+        p, small, h1, h2, li .modify, #addBook{
                 letter-spacing: 2px;
                 line-height:35px;
         }

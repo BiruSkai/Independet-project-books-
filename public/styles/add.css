@@ -24,6 +24,13 @@
       }
 }
 
+.back{
+  text-decoration: none;
+  margin-left:15px;
+  display:block;
+  text-align: center;
+}
+
 .submit{
         width:70px;
         padding:5px;

@@ -78,6 +78,27 @@ app.get("/add", (req, res) => {
         res.render("add.ejs", {queries});
 })
 
+app.get("/update/:id", async (req, res) => {
+        const id = parseInt(req.params.id);
+        console.log("get update id: ", id);
+
+        try {
+                const queries= ["title", "author", "website", "isbn"];
+
+                const fetchBookId = await db.query("SELECT * FROM books WHERE id = $1", [id]);
+                let dataBookId = fetchBookId.rows[0];
+                console.log("get update dataBookId: ", dataBookId);
+
+                res.render("add.ejs", {queries, dataBookId})
+        } catch (error) {
+                console.log(error)
+
+                const queries= ["title", "author", "website", "isbn"];
+                res.render("add.ejs", {error:"Can not fetch this boook data to upate. Try again.", queries})
+        }
+        
+})
+
 app.post("/add", async (req, res) => {
         let {title, author, website, isbn, rating, summary, notes} = req.body;
 
@@ -97,6 +118,21 @@ app.post("/add", async (req, res) => {
                 res.render("add.ejs", {error:"Problem occured in saving your new book. Try again.", queries})
         }
         
+})
+
+app.post("/delete/:id", async(req, res) => {
+        const id = parseInt(req.params.id);
+        console.log("/delete id: ", id);
+
+        try {
+                await db.query("DELETE FROM books WHERE id = $1", [id]);
+                res.redirect("/");
+        } catch (error) {
+                console.log(error)
+
+                const queries= ["title", "author", "website", "isbn"];
+                res.render("add.ejs", {error:`Can not delete the book.`, queries})
+        }
 })
 
 app.listen(port, () => {

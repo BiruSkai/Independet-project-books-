@@ -34,8 +34,8 @@
                         <div class="bookContainer">
                                 <div>
                                         <ul>
-                                                <li><a href="/update/<%= book.id %>">Update Book</a></li>
-                                                <li><a href="/delete/<%= book.id %>">Delete Book</a></li>
+                                                <li><a href="/update/<%= book.id %>" class="modify">Update</a></li>
+                                                <li><form method="post" action="/delete/<%= book.id %>"><input class="modify" type="submit" name="delete" value="Delete"></form></li>
                                         </ul>
                                         <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="book Image: <%= book.title %>"/>
                                 </div>
