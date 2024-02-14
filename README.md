@@ -3,9 +3,8 @@ HTML, CSS, Express, EJS, Axios, Pg
 
 How to run the Books app:
 - Clone the code
-- Create table in your from queries.sql
-- In index.ejs to have access to database (PgAddmin) , write your individual user, password, host, port, and database's name of this app.
-- In terminal of your programming app:
-   2.1  Type npm i -y
-   2.2  
+- Create table from queries.sql in Pg 
+- In index.ejs write your individual user, password, host, port, and database's name.
+- In terminal of your programming app, type 'npm i -y'
+- Run the program by typing 'nodemon index.js' in your terminal  
    
