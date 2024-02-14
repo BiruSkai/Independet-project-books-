@@ -11,59 +11,54 @@
         <hr>
         <p><%= locals.error ? error : null %></p> 
         <a href="/" class="back submit">Back</a>
-        <form method="post" action="/add">
+        <form method="post" action="<%= locals.dataBookId ? '/update' : '/add' %>">
                 <% queries.map(query => { %>
                         <div class="queryContainer">
                                 <label for="<%= query %>"><%= query.charAt(0).toUpperCase() + query.slice(1) %>:</label>
-                                <!-- Problem: -->
-                                <% console.log("test1: ", query) %>
-                                <% console.log("test2: ", dataBookId ) %>
-                                <% console.log("test3: ", dataBookId.query ) %>
-                                
+
                                 <% let data %> 
-                                <% switch (query) { 
-                                        case "isbn": %>
-                                                data = dataBookId.isbn
-                                                <% break 
-                                        case "title": %>
-                                                data = dataBookId.title
-                                                <% break
-                                        case "summary": %>
-                                                data = dataBookId.summary
-                                                <% break 
-                                        case "notes": %>
-                                                data = dataBookId.notes
-                                                <% break 
-                                        case "website": %>
-                                                data = dataBookId.website
-                                                <% break 
-                                        case "rating": %>
-                                                data = dataBookId.rating 
-                                                <% break 
-                                        case "author": %>
-                                                data = dataBookId.author
-                                                <% break 
-                                } %>
+                                <% if (locals.dataBookId) { %>
+                                        <% switch ( query ) { 
+                                                case "isbn": %>
+                                                        <% data = dataBookId.isbn %>
+                                                        <% break 
+                                                case "title": %>
+                                                        <% data = dataBookId.title %>
+                                                        <% break
+                                                case "website": %>
+                                                        <% data = dataBookId.website %>
+                                                        <% break 
+                                                case "rating": %>
+                                                        <% data = dataBookId.rating %>
+                                                        <% break 
+                                                case "author": %>
+                                                        <% data = dataBookId.author %>
+                                                        <% break 
+                                        } %>
+                                <% } %>
+                                
                                 <input type="text" name="<%= query %>" id="<%= query %>" value="<%= locals.dataBookId ? data : '' %>" />
                         </div>
                 <% }) %>
+
+                <input hidden name="id" value="<%= locals.dataBookId ? dataBookId.id : '' %>">
 
                 <div class="queryContainer">
                         <label for="rating">Rating:</label>
                         <select name="rating" id="rating">
                                 <% for (let i = 1; i < 11; i++) { %>
-                                        <option value="<%= locals.dataBookId ? dataBookId.rating : i %>"><%= i %></option>
+                                        <option value="<%= i %>" <%= locals.dataBookId && locals.dataBookId.rating == i ? 'selected' : '' %>><%= i %></option>
                                 <% } %>
                         </select>
                 </div>
 
                 <div class="queryContainer">
                         <label for="summary">Summary:</label><br>
-                        <textarea name="summary" id="summary" maxlength="700" cols="50" rows="5"></textarea>
+                        <textarea name="summary" id="summary" maxlength="700" cols="50" rows="5"><%= locals.dataBookId ? dataBookId.summary : '' %></textarea>
                 </div>
                 <div class="queryContainer">
                         <label for="notes">Notes:</label><br>
-                        <textarea name="notes" id="notes" cols="50" rows="10"></textarea>
+                        <textarea name="notes" id="notes" cols="50" rows="10" ><%= locals.dataBookId ? dataBookId.notes : '' %></textarea>
                 </div>
                 <input type="submit" value="<%= locals.dataBookId ? 'Send Update' : 'Add' %>" class="queryContainer submit">
         </form>

@@ -113,9 +113,23 @@ app.post("/add", async (req, res) => {
                 res.redirect("/");
         } catch (error) {
                 console.log(error);
+                res.redirect("/");
+        }
+})
+
+app.post("/update", async (req, res) => {
+        let {title, author, website, isbn, rating, summary, notes} = req.body;
+        const id = parseInt(req.body.id);
+        console.log("postUpdate title, author, website, isbn, rating, id: ", title, author, website, isbn, rating, id);
+
+        try {
+                await db.query("UPDATE books SET title=$1, author=$2, website=$3, isbn=$4, rating=$5, summary=$6, notes=$7 WHERE id=$8", [title, author, website, isbn, rating, summary, notes, id]);    
+                res.redirect("/");
+        } catch (error) {
+                console.log(error);
 
                 const queries= ["title", "author", "website", "isbn"];
-                res.render("add.ejs", {error:"Problem occured in saving your new book. Try again.", queries})
+                res.render("add.ejs", {error:"Problem occured in saving your update. Try again.", queries});
         }
         
 })
