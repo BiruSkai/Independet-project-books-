@@ -5,11 +5,11 @@ import axios from "axios";
 const app = express();
 const port = 3000;
 const db = new pg.Client({
-        user:"postgres",
-        password:"postgres",
-        database:"Books",
-        host:"localhost",
-        post:5432
+        user:"",
+        password:"",
+        database:"",
+        host:"",
+        post:
 });
 
 db.connect();
